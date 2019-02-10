@@ -68,5 +68,11 @@ getNextSiblingElement: function (selector){
 // • Достъп до всички деца на елемента(children elements)
 getChildElement:function (selector){
   return document.querySelector(selector).childNodes;
+},
+
+// 6. Имплементирайте събитиен модел който да ползва
+// вградените в системата обекти за събития.
+addEvent: function(selector, event, func){
+  document.querySelector(selector).addEventListener(event, func);
 }
 };
