@@ -1,3 +1,6 @@
+// Направих Библиотека за DOM манипулация
+// и Основни задачи
+
 var DOMlib = {
 // 1. Взимане на съществуващ DOM елемент от страницата.
 getElement: function (selector){
@@ -10,23 +13,27 @@ addElementTo: function (selector, tag) {
   var newEl = document.createElement(tag);
   var element = this.getElement(selector);
   element.appendChild(newEl);
+  return this; // method chaining
 },
 
 // 3. Изтриване на съществуващ елемент от HTML страницата.
 deleteElement: function (selector){
   var item = document.querySelector(selector);
   item.parentNode.removeChild(item);
+  return this;
 },
 
 // 4. Промяна на свойствата на избран елемент, в това число:
 // a. Промяна на атрибутите на елемента(id/class/data/name)
 changeAttr: function (selector, attribute, value){
   document.querySelector(selector).setAttribute(attribute, value);
+  return this;
 },
 
 // b. Промяна и връщане на текстово съдържание
 changeText: function (selector, text){
   document.querySelector(selector).innerText = text;
+  return this;
 },
 
 getText: function (selector){
@@ -35,7 +42,8 @@ getText: function (selector){
 
 // c. Промяна и връщане на HTML съдържание на елемента
 changeHTML: function (selector, content){
-  document.querySelector(selector).innerHTML = content;
+  document.querySelector(selector).innerHTML += content;
+  return this;
 },
 
 getHTML: function (selector){
@@ -47,6 +55,7 @@ getHTML: function (selector){
 changeStyle: function (selector, key, parametr){
   var el = document.querySelector(selector);
   el.style.setProperty(key, parametr);
+  return this;
 },
 
 // 5. Контрол на траверсирането спрямо селектираният елемент, в това число:
@@ -74,5 +83,6 @@ getChildElement:function (selector){
 // вградените в системата обекти за събития.
 addEvent: function(selector, event, func){
   document.querySelector(selector).addEventListener(event, func);
+  return this;
 }
 };
